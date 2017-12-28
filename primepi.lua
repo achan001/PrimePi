@@ -109,7 +109,7 @@ function prime.pi(x)                    -- number of primes <= x
     return phi(P, x, m, psum) + m - 1
 end
 
-if select('#', ...) ~= 'primepi' then   -- test code
-    print(prime.pi(eval(select(1, ...))))
+if select(1, ...) ~= 'primepi' then     -- test code
+    print(prime.pi(tonumber(select(1, ...))))
 end
 return prime
