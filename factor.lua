@@ -33,7 +33,7 @@ local function prho(n)          -- n composite, factors >= 5
         g = gcd(n, g)
         if g > 1 then
             if g ~= n then return g end     -- factor found
-            a = floor(-3 - (n-3)*random())  -- [-n+1, -3]
+            a = -3 - floor((n-3)*random())  -- [-n+1, -3]
             u = floor(n*random())           -- [0, n-1]
             v = u
         end
@@ -48,7 +48,9 @@ local function recursive_prho(n, t)
 end
 
 local function factor(n)
+    n = floor(n)
     local t = {}
+    if n < 2 then return t end
     while n%2 == 0 do n=n/2; t[#t+1]=2 end  -- required
     while n%3 == 0 do n=n/3; t[#t+1]=3 end  -- required
     while n%5 == 0 do n=n/5; t[#t+1]=5 end
